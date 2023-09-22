@@ -106,23 +106,89 @@ List<Debtor> debtors = new List<Debtor> {
 
 
 // 10. Вывести должника, у которого самая длинная фамилия среди должников с самым коротким именем.
-var shortestNameLength = debtors.Min(debtor => debtor.FullName.Split('.').First().Length);
-var debtor9 = debtors.Where(debtor => debtor.FullName.Split(' ').First().Length == shortestNameLength).
-    OrderByDescending(debtor => debtor.FullName.Split(". ")[1].Length).FirstOrDefault();
-
-Console.WriteLine(debtor9);
+//var shortestNameLength = debtors.Min(debtor => debtor.FullName.Split('.').First().Length);
+//var debtor9 = debtors.Where(debtor => debtor.FullName.Split(' ').First().Length == shortestNameLength).
+//    OrderByDescending(debtor => debtor.FullName.Split(". ")[1].Length).FirstOrDefault();
+//Console.WriteLine(debtor9);
 
 // 11. Вывести должников, у которых в имени и фамилии есть хотя бы 3 одинаковые буквы, отсортировав их в алфавитном порядке по среднему имени. 
+//var debtors10 = debtors
+//           .Where(debtor => debtor.FullName.Split(" ")[0].Count(c => debtor.FullName.Split(". ")[1].Contains(c)) >= 3)
+//           .OrderBy(debtor => debtor.FullName.Split(' ')[1])
+//           .ToList();
+// debtors10.ForEach(Console.WriteLine);
+
+
 // 12. Вывести самый популярный почтовый домен среди должников.
+//var domen = debtors.Select(debtor => debtor.Email.Split('@').Last())  
+//            .OrderByDescending(group => group.Count()) 
+//            .ToList();
+//Console.WriteLine(domen.First());
+
+
 // 13. Вывести год, в который родилось наибольшее количество должников.
+//var year = debtors.GroupBy(debtor => debtor.BirthDay.Year)
+//            .OrderByDescending(group => group.Count()) 
+//            .ToList();
+//Console.WriteLine(year.First().Key);
+
+
 // 14. Вывести Топ-5 должников по сумме долга.
+//var debtors12 = debtors.Select(d => d.Debt).OrderByDescending(x => x).Take(5).ToList();
+//debtors12.ForEach(Console.WriteLine);
+
+
 // 15. Вывести общую сумму долга всех должников.
+//var summ = debtors.Select(d => d.Debt).Sum();
+//Console.WriteLine($"Summ: {summ} ");
+
 // 16. Вывести имена и фамилии людей, переживших Вторую Мировую Войну.
+//var debtors13=debtors.Where(d=>d.BirthDay.Year<1945).ToList();
+//foreach(var debtor in debtors13)
+//{
+//    Console.WriteLine($"{debtor.FullName.Split(" ")[0]} {debtor.FullName.Split(".")[1]}");
+//}
+
+
 // 17. Вывести фамилии и возраст людей, родившихся после развала СССР.
+//var debtors14 = debtors.Where(d => d.BirthDay.Year >1991 ).ToList();
+//foreach (var debtor in debtors14)
+//{
+//    Console.WriteLine($"{debtor.FullName.Split(" ")[0]} {debtor.FullName.Split(".")[1]}");
+//}
+
+
+
 // 18. Вывести номера телефона и суммы долга людей, в номере телефона которых нет повторяющихся цифр.
+//var debtors15=debtors.Where(d=>d.Phone.Distinct().Count()==d.Phone.Length).ToList();
+//foreach(var debtor in debtors15)
+//{
+//    Console.WriteLine($"{debtor.Phone} {debtor.Debt}");
+//}
+
+
+
 // 19. Представим, что все должники начали отдавать свои долги с текущего дня по 500 каждый месяц. 
 //     Вывести на экран список должников, которые успеют отдать долг до своего следующего дня рождения.
+
+//foreach (var debtor in debtors)
+//{
+//    int monthsNextBirthday = ((debtor.BirthDay.AddYears(DateTime.Now.Year - debtor.BirthDay.Year+1)) - DateTime.Now).Days / 30;
+//    int remainingDebt = debtor.Debt -(monthsNextBirthday * 500);
+
+//    if (remainingDebt <= 0)
+//    {
+//        Console.WriteLine($"{debtor.FullName}");
+//    }
+//}
+
+
+
 // 20. Вывести тех должников, из букв имени и фамилии которых можно собрать слово "smile".
+var debtors16 = debtors.Where(d => d.FullName.Contains("s") && d.FullName.Contains("m") && d.FullName.Contains("i")
+&& d.FullName.Contains("l") && d.FullName.Contains("e")).ToList();
+debtors16.ForEach(Console.WriteLine);
+
 
 // Максимально используйте LINQ.
 // https://metanit.com/sharp/tutorial/15.1.php
